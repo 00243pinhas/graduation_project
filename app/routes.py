@@ -4,6 +4,12 @@ import os
 from werkzeug.utils import secure_filename
 from .resnet_model import extract_features
 import pickle
+import io
+from PIL import Image
+import numpy as np
+
+
+
 main = Blueprint("main", __name__)
 
 # Create an item
@@ -64,3 +70,41 @@ def get_items():
         })
 
     return jsonify(output)
+
+
+@main.route('/api/match',methods=['POST'])
+def match_item():
+
+    uploaded_file = request.files.get('image')
+    
+    if not uploaded_file:
+        return jsonify({"error": "No image uploaded"}), 400
+
+    image = Image.open(uploaded_file.stream).convert('RGB')
+
+    uploaded_features = extract_features(image)  
+
+    items = Item.query.all()
+    best_match = None
+    min_distance = float('inf')
+
+    for item in items:
+        if item.features:
+            db_features = pickle.loads(item.features)
+            distance = np.linalg.norm(uploaded_features - db_features)
+            if distance < min_distance:
+                min_distance = distance
+                best_match = item
+
+    if best_match:
+        return jsonify({
+            "match_found": True,
+            "id": best_match.id,
+            "name": best_match.name,
+            "location": best_match.location,
+            "category": best_match.category,
+            "image": f"/static/uploads/{best_match.image}",
+            "similarity_score": float(min_distance)
+        })
+    else:
+        return jsonify({"match_found": False})
