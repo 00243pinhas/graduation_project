@@ -23,14 +23,3 @@ def extract_features(img_path):
     else:
         raise TypeError("Expected a PIL.Image.Image")
 
-
-    # img = keras_image.load_img(img_path, target_size=(224, 224))
-    # x = keras_image.img_to_array(img)
-    # x = np.expand_dims(x, axis=0)
-    # x = preprocess_input(x)
-    # features = model.predict(x)
-
-
-
-    # print(features)
-    # return features[0]  # Flattened 2048-dim vector

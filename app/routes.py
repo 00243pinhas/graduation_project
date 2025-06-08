@@ -84,6 +84,10 @@ def match_item():
 
     uploaded_features = extract_features(image)  
 
+    print(f'feauture uploaded : {uploaded_features[:5]}')
+
+    TRASHOLDS = 150.0 
+
     items = Item.query.all()
     best_match = None
     min_distance = float('inf')
@@ -91,12 +95,21 @@ def match_item():
     for item in items:
         if item.features:
             db_features = pickle.loads(item.features)
+
+            print(f'deb features  {db_features[:5]}')
             distance = np.linalg.norm(uploaded_features - db_features)
+            print(f'distance {distance}')
             if distance < min_distance:
                 min_distance = distance
                 best_match = item
 
-    if best_match:
+
+    if best_match and min_distance < TRASHOLDS:
+
+        similarity_percent = 100 - (min_distance / TRASHOLDS) * 100
+
+        similarity_percent = max(0.0, round(similarity_percent, 2))
+
         return jsonify({
             "match_found": True,
             "id": best_match.id,
@@ -104,7 +117,12 @@ def match_item():
             "location": best_match.location,
             "category": best_match.category,
             "image": f"/static/uploads/{best_match.image}",
-            "similarity_score": float(min_distance)
+            "similarity_score": float(min_distance),
+            "similarity_percent": float(similarity_percent)
         })
     else:
-        return jsonify({"match_found": False})
+        return jsonify({
+            "match_found": False,
+            "message": "No similar item was found.",
+            "suggestion": "Consider adding this item to the system."
+        })
