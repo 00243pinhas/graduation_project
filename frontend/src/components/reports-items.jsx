@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 
 import React, { useState } from 'react';
 
 
 const ReportForm = () => {
 
-
+    const navigate = useNavigate();
             
   const [formData, setFormData] = useState({
     name: '',
@@ -40,6 +41,7 @@ const ReportForm = () => {
 
       const result = await res.json();
       console.log(result);
+      navigate('/');
     } catch (err) {
       console.log(err);
      

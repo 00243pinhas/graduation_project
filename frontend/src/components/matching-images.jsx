@@ -1,10 +1,18 @@
-import { useState } from "react";
 
+
+
+
+import { useState } from "react";
+import MessageModal from "./boostapModal";
 
 const MatchingImage = () => {
 
 
     const [image, setImage ] = useState(null)
+    const [responseMessage, setResponseMessage] = useState("");
+    const [showModal, setShowModal] = useState(false);
+
+
 
 
     const handleImageChange = (e)=>{
@@ -29,11 +37,14 @@ const MatchingImage = () => {
       });
 
       const result = await res.json();
-      console.log(result);
+        setResponseMessage(result.message);
             
         } catch (error) {
-            console.log(error)
+            setResponseMessage("Error matching image.");
+
         }
+
+        setShowModal(true);
 
     }
     return (
@@ -67,6 +78,9 @@ const MatchingImage = () => {
           </div>
         </div>
       </form>
+
+        <MessageModal show={showModal} setShow={setShowModal} message={responseMessage} />
+
     </div>
   );
 
