@@ -1,0 +1,1 @@
+console.log("according to Your reaches and gloies in christ jesus ")
