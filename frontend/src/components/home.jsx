@@ -1,5 +1,7 @@
 import React from 'react';
 import { Brain, Zap, Shield, Target, ChevronRight, Star, Users, Sparkles, Bot, TrendingUp, CheckCircle , Mic} from 'lucide-react';
+import { Link } from 'react-router-dom';
+
 
 const services =[
   {
@@ -43,33 +45,9 @@ const services =[
     title: "Speech Recognition",
     description: "Transform audio into actionable insights using advanced speech-to-text technology and voice understanding.",
     features: ["Voice Transcription", "Speaker Identification", "Real-time Processing"]
-  } ,
-
-   {
-    icon: Zap,
-    title: "Lightning Fast Implementation",
-    description: "Get your AI solutions up and running in days, not months, with our streamlined deployment process."
-  },
-  {
-    icon: Shield,
-    title: "Enterprise-Grade Security",
-    description: "Bank-level security with end-to-end encryption, ensuring your data remains protected at all times."
-  },
-  {
-    icon: Users,
-    title: "Expert Support Team",
-    description: "Access to AI specialists and data scientists who guide you through every step of your AI journey."
-  },
-  {
-    icon: TrendingUp,
-    title: "Scalable Solutions",
-    description: "Our platform grows with your business, handling everything from startup needs to enterprise scale."
-  },
-  {
-    icon: Plug, // New icon for the new benefit
-    title: "Seamless Integration",
-    description: "Easily connect our AI platform with your existing tools and infrastructure for a frictionless experience."
   }
+
+  
 ]
 
 
@@ -86,18 +64,20 @@ const Home = () => {
               </div>
 
               <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Transform Your Business with
+                  Find Your object with
                 <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Intelligent AI</span>
               </h1>
 
               <p className="text-xl text-gray-600 leading-relaxed">
-                Unlock the power of artificial intelligence to automate processes, gain insights, and drive innovation. 
-                Our cutting-edge AI solutions help businesses scale efficiently and make data-driven decisions.
+                Unlock the power of artificial intelligence to automate processes,seek, and Find. 
+                Our cutting-edge AI solutions help people to efficiently find thier object.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 flex items-center justify-center space-x-2">
-                  <span>Start Free Trial</span>
+                  {/* <span>Start Free Trial</span> */}
+                  <Link to="/match"><span className='text-white'>Start Free Trial</span></Link>
+
                   <ChevronRight className="w-5 h-5" />
                 </button>
                 <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg font-semibold hover:border-gray-400 hover:bg-gray-50 transition-all duration-200">

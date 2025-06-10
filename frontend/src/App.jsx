@@ -13,7 +13,7 @@ function App() {
         <div>
           <Navbarr/>
           <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home/>} />
               <Route path="/report" element={<ReportForm />} />
               <Route path="/match" element={<MatchingImage />} />
         </Routes>
