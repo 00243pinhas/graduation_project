@@ -48,7 +48,7 @@ const MatchingImage = () => {
 
     }
     return (
-     <div>
+     <div className="m-4rem gap-3">
       <h2>Matching Lost Item</h2>
 
       <form onSubmit={handleSubmit}>
