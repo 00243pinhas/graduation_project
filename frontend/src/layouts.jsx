@@ -1,5 +1,5 @@
 
-
+import { Link } from 'react-router-dom';
 import "../src/layout.css"
 // import { Brain, Zap, Shield, Target, ChevronRight, Star, Users, Sparkles, Bot, TrendingUp, CheckCircle } from 'lucide-react';
 
@@ -13,15 +13,24 @@ const Navbarr = () => {
               <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                 {/* <Brain className="w-5 h-5 text-white" /> */}
               </div>
+              <Link to="/">
               <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   PinhasFound 
               </span>
+              </Link>
+
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              <a href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">Services</a>
-              <a href="#solutions" className="text-gray-600 hover:text-gray-900 transition-colors">Solutions</a>
-              <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
-              <a href="#contact" className="text-gray-600 hover:text-gray-900 transition-colors">Contact</a>
+                <Link to="/report">
+              <a href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">Post Services</a>
+
+              </Link>
+                <Link to="/match">
+              <a href="#solutions" className="text-gray-600 hover:text-gray-900 transition-colors">find service </a>
+
+              </Link>
+
+    
               <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105">
                 Get Started
               </button>
