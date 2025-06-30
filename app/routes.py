@@ -113,14 +113,17 @@ def match_item():
         # similarity_percent = max(0.0, round(similarity_percent, 2))
 
         return jsonify({
-            "match_found": True,
-            "id": best_match.id,
-            "name": best_match.name,
-            "location": best_match.location,
-            "category": best_match.category,
-            "image": f"/static/uploads/{best_match.image}",
-            "similarity_score": float(min_distance),
-            "similarity_percent": round(max(0.0, 100 - float(min_distance)), 2)     
+            # "match_found": True,
+            # "id": best_match.id,
+            # "name": best_match.name,
+            # "location": best_match.location,
+            # "category": best_match.category,
+            # "image": f"/static/uploads/{best_match.image}",
+            # "similarity_score": float(min_distance),
+            # "similarity_percent": round(max(0.0, 100 - float(min_distance)), 2)     
+                "match_found": True,
+                "message": "item was found.",
+                "suggestion": "Consider adding this item to the system."
                 })
     else:
             return jsonify({

@@ -22,11 +22,11 @@ const Navbarr = () => {
             </div>
             <div className="hidden md:flex items-center space-x-8">
                 <Link to="/report">
-              <a href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">Post Services</a>
+              <span className="text-gray-600 hover:text-gray-900 transition-colors">Post Services</span>
 
               </Link>
                 <Link to="/match">
-              <a href="#solutions" className="text-gray-600 hover:text-gray-900 transition-colors">find service </a>
+              <span href="#solutions" className="text-gray-600 hover:text-gray-900 transition-colors">find service </span>
 
               </Link>
 
